@@ -1,5 +1,5 @@
 name: widget_playground
-description: "Песочница части 2: опыты из глав 9-13 книги про Flutter."
+description: "Песочница части 2: опыты из глав 10-16 книги про Flutter."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
