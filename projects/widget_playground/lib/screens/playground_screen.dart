@@ -17,6 +17,9 @@ const _chapters = {
   11: 'Глава 11. Кнопки, ввод и состояние',
   12: 'Глава 12. Наводим красоту',
   13: 'Глава 13. Много экранов: навигация',
+  // Новая глава про формы: номер временный, встанет на своё место при
+  // перенумерации книги.
+  14: 'Новая глава. Формы и валидация',
 };
 
 const _demos = <Demo>[
@@ -53,9 +56,11 @@ const _demos = <Demo>[
       Icons.chat_bubble_outline, '/dialogs'),
   Demo(13, 'Настройки', 'Именованный маршрут /settings', Icons.settings,
       '/settings'),
+  Demo(14, 'Анкета участника', 'Form, TextFormField, validator, сброс формы',
+      Icons.fact_check_outlined, '/survey'),
 ];
 
-/// Хаб песочницы: список всех опытов глав 9–13.
+/// Хаб песочницы: список всех опытов части 2.
 class PlaygroundScreen extends StatelessWidget {
   const PlaygroundScreen({
     super.key,
