@@ -16,6 +16,7 @@ import 'screens/main_shell.dart';
 import 'screens/playground_screen.dart';
 import 'screens/profile_screen.dart';
 import 'screens/red_screen_demo.dart';
+import 'screens/responsive_screen.dart';
 import 'screens/settings_screen.dart';
 import 'screens/survey_screen.dart';
 import 'screens/theme_demo_screen.dart';
@@ -95,6 +96,7 @@ class _PlaygroundAppState extends State<PlaygroundApp> {
         '/tabs': (context) => const MainShell(),
         '/dialogs': (context) => const DialogsScreen(),
         '/survey': (context) => const SurveyScreen(),
+        '/responsive': (context) => const ResponsiveScreen(),
       },
     );
   }

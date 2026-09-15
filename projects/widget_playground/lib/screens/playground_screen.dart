@@ -20,6 +20,7 @@ const _chapters = {
   // Новая глава про формы: номер временный, встанет на своё место при
   // перенумерации книги.
   14: 'Новая глава. Формы и валидация',
+  15: 'Новая глава. Любой экран',
 };
 
 const _demos = <Demo>[
@@ -58,6 +59,8 @@ const _demos = <Demo>[
       '/settings'),
   Demo(14, 'Анкета участника', 'Form, TextFormField, validator, сброс формы',
       Icons.fact_check_outlined, '/survey'),
+  Demo(15, 'Карточка на любом экране', 'LayoutBuilder, брейкпоинт, Wrap, FittedBox',
+      Icons.devices, '/responsive'),
 ];
 
 /// Хаб песочницы: список всех опытов части 2.
