@@ -16,7 +16,7 @@ class QuestionsApi {
       throw Exception('Сервер ответил кодом ${response.statusCode}');
     }
 
-    final list = jsonDecode(response.body) as List;
+    final list = jsonDecode(utf8.decode(response.bodyBytes)) as List;
     return list
         .map((item) => Question.fromJson(item as Map<String, dynamic>))
         .toList();

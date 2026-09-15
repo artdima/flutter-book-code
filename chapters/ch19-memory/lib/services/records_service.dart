@@ -19,23 +19,23 @@ class RecordEntry {
 class RecordsService {
   final _prefs = SharedPreferencesAsync();
 
-  Future<List<RecordEntry>> load() {
-    return _prefs.getString('records').then((text) {
-      if (text == null) return <RecordEntry>[];
-      final list = jsonDecode(text) as List;
-      return list
-          .map((item) => RecordEntry.fromJson(item as Map<String, dynamic>))
-          .toList();
-    });
+  Future<List<RecordEntry>> load() async {
+    final text = await _prefs.getString('records');
+    if (text == null) return <RecordEntry>[];
+
+    final list = jsonDecode(text) as List;
+    return list
+        .map((item) => RecordEntry.fromJson(item as Map<String, dynamic>))
+        .toList();
   }
 
-  Future<void> add(RecordEntry entry) {
-    return load().then((records) {
-      records.add(entry);
-      records.sort((a, b) => b.score.compareTo(a.score)); // лучшие сверху
-      if (records.length > 10) records.removeRange(10, records.length);
-      final text = jsonEncode(records.map((r) => r.toJson()).toList());
-      return _prefs.setString('records', text);
-    });
+  Future<void> add(RecordEntry entry) async {
+    final records = await load();
+    records.add(entry);
+    records.sort((a, b) => b.score.compareTo(a.score)); // лучшие сверху
+    if (records.length > 10) records.removeRange(10, records.length);
+
+    final text = jsonEncode(records.map((r) => r.toJson()).toList());
+    await _prefs.setString('records', text);
   }
 }

@@ -22,10 +22,13 @@ class _QuizAppState extends State<QuizApp> {
   @override
   void initState() {
     super.initState();
-    SharedPreferencesAsync().getString('theme_mode').then((name) {
-      if (!mounted || name == null) return;
-      setState(() => _themeMode = ThemeMode.values.byName(name));
-    });
+    _loadThemeMode();
+  }
+
+  Future<void> _loadThemeMode() async {
+    final name = await SharedPreferencesAsync().getString('theme_mode');
+    if (!mounted || name == null) return;
+    setState(() => _themeMode = ThemeMode.values.byName(name));
   }
 
   void _setThemeMode(ThemeMode mode) {

@@ -37,9 +37,12 @@ class _GameScreenState extends State<GameScreen> {
   void initState() {
     super.initState();
     _startTimer();
-    SharedPreferencesAsync().getBool('sound_on').then((value) {
-      if (mounted) _soundOn = value ?? true;
-    });
+    _loadSound();
+  }
+
+  Future<void> _loadSound() async {
+    final value = await SharedPreferencesAsync().getBool('sound_on');
+    if (mounted) _soundOn = value ?? true;
   }
 
   @override

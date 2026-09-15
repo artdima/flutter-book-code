@@ -25,19 +25,18 @@ class _ResultScreenState extends State<ResultScreen> {
     _checkRecord();
   }
 
-  void _checkRecord() {
-    _prefs.getInt('best_score').then((saved) {
-      if (!mounted) return;
-      final best = saved ?? 0;
-      if (widget.score > best) {
-        _prefs.setInt('best_score', widget.score);
-        setState(() {
-          _bestScore = widget.score;
-          _isNewRecord = true;
-        });
-      } else {
-        setState(() => _bestScore = best);
-      }
+  Future<void> _checkRecord() async {
+    final saved = await _prefs.getInt('best_score');
+    final best = saved ?? 0;
+
+    if (widget.score > best) {
+      await _prefs.setInt('best_score', widget.score);
+    }
+
+    if (!mounted) return;
+    setState(() {
+      _bestScore = widget.score > best ? widget.score : best;
+      _isNewRecord = widget.score > best;
     });
   }
 

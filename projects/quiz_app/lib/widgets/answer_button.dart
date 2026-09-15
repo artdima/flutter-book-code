@@ -21,6 +21,8 @@ class AnswerButton extends StatelessWidget {
           : FilledButton.styleFrom(
               backgroundColor: color,
               foregroundColor: Colors.white,
+              disabledBackgroundColor: color,
+              disabledForegroundColor: Colors.white,
             ),
       onPressed: onPressed,
       child: Padding(

@@ -67,9 +67,6 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
   void _resetAll() {
     _formKey.currentState!.reset();
-    _nameController.clear();
-    _ageController.clear();
-    _emailController.clear();
     setState(() {
       _topic = null;
       _agreed = false;

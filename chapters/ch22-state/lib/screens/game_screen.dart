@@ -58,7 +58,7 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   void _playSound(bool correct) {
-    if (!SettingsScope.of(context).soundOn) return;
+    if (!SettingsScope.read(context).soundOn) return;
     _player.play(AssetSource('sounds/${correct ? 'correct' : 'wrong'}.mp3'));
   }
 

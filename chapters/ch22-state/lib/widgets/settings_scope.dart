@@ -10,8 +10,16 @@ class SettingsScope extends InheritedNotifier<SettingsModel> {
     required super.child,
   }) : super(notifier: settings);
 
+  /// Читает и подписывает: виджет перестроится при любом изменении настроек.
   static SettingsModel of(BuildContext context) {
     final scope = context.dependOnInheritedWidgetOfExactType<SettingsScope>();
+    assert(scope != null, 'SettingsScope не найден выше по дереву');
+    return scope!.notifier!;
+  }
+
+  /// Читает без подписки — когда нужно только позвать метод или значение разово.
+  static SettingsModel read(BuildContext context) {
+    final scope = context.getInheritedWidgetOfExactType<SettingsScope>();
     assert(scope != null, 'SettingsScope не найден выше по дереву');
     return scope!.notifier!;
   }

@@ -22,14 +22,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
     _loadSettings();
   }
 
-  void _loadSettings() {
-    _prefs.getBool('sound_on').then((value) {
-      if (!mounted) return;
-      setState(() => _soundOn = value ?? true);
-    });
-    _prefs.getString('theme_mode').then((name) {
-      if (!mounted || name == null) return;
-      setState(() => _themeMode = ThemeMode.values.byName(name));
+  Future<void> _loadSettings() async {
+    final sound = await _prefs.getBool('sound_on');
+    final name = await _prefs.getString('theme_mode');
+    if (!mounted) return;
+    setState(() {
+      _soundOn = sound ?? true;
+      if (name != null) _themeMode = ThemeMode.values.byName(name);
     });
   }
 
